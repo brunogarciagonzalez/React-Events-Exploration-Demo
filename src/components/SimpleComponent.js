@@ -9,19 +9,6 @@ class SimpleComponent extends React.Component {
     };
   }
 
-  // * a dive into "pooling" and "event object nullification" *
-  // class instance variable that points to an array
-  // When event callback takes place:
-
-  //  if (event object is currently not in the array) {
-  //    push event object into this array
-  // }
-
- // Will there end up being only one obj in the end?
-
- // how does this relate to the virtual DOM?
-
-
   handleClick = e => {
     // e.persist()
     if (this.state.toCheck.includes(e)){
