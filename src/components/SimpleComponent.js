@@ -25,8 +25,8 @@ class SimpleComponent extends React.Component {
       // what is below will equate to true because:
       // since it is same object in memory, the keys of object in the array have been updated with the new values, in order to be passed into this callback this.handleClick!
 
-      console.log("in state:", this.state.toCheck[0].dispatchConfig)
-      console.log("arg:", e.dispatchConfig)
+      // console.log("in state:", this.state.toCheck[0].dispatchConfig)
+      // console.log("arg:", e.dispatchConfig)
     } else {
       console.warn("eObj yes added to arr")
       this.setState({
