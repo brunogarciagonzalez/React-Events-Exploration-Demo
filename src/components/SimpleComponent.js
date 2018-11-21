@@ -18,15 +18,15 @@ class SimpleComponent extends React.Component {
       // what is below will equate to true because:
       // even though we are comparing two variables, they both point to the same object in memory
 
-      // console.log("comparison result (is same?):", this.state.toCheck[0].dispatchConfig===e.dispatchConfig)
+      console.log("comparison result (is obj in Arr same as current eObj?):", this.state.toCheck[0] ===e)
 
       // =======
 
       // what is below will equate to true because:
-      // since it is same object in memory, the keys of object in the array has been updated with the new values, in order to be passed into this callback this.handleClick!
+      // since it is same object in memory, the keys of object in the array have been updated with the new values, in order to be passed into this callback this.handleClick!
 
-      // console.log("in state:", this.state.toCheck[0].dispatchConfig)
-      // console.log("arg:", e.dispatchConfig)
+      console.log("in state:", this.state.toCheck[0].dispatchConfig)
+      console.log("arg:", e.dispatchConfig)
     } else {
       console.warn("eObj yes added to arr")
       this.setState({
