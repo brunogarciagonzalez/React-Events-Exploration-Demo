@@ -12,6 +12,7 @@ class SimpleComponent extends React.Component {
 
   handleClick = e => {
     // run the app with and without e.persist() to see the difference in the console!
+    
     // e.persist()
 
     if (this.state.eObjArray.includes(e)){
@@ -21,21 +22,18 @@ class SimpleComponent extends React.Component {
       // what is below will equate to true because:
       // even though we are comparing two variables, they both point to the same object in memory
 
-      console.log("comparison result (is obj in Arr same as current eObj?):", this.state.eObjArray[0] ===e)
+      // console.log("comparison result (is obj in Arr same as current eObj?):", this.state.eObjArray[0] ===e)
 
-      // =======
-
-      // what is below will equate to true because:
-      // since it is same object in memory, the keys of object in the array have been updated with the new values, in order to be passed into this callback this.handleClick!
-
-      // console.log("in state:", this.state.eObjArray[0].dispatchConfig)
-      // console.log("arg:", e.dispatchConfig)
     } else {
       console.warn("eObj yes added to arr")
+      console.log("eObj while executing eventHandler: ", e)
       this.setState({
         eObjArray: [...this.state.eObjArray, e]
-      }, () => console.log(this.state.eObjArray))
-    }
+      }, () => {
+        console.log("most up-to-date this.state.eObjArray: ", this.state.eObjArray);
+        console.log("eObj after eventHandler is out of execution stack: ", e);
+      }
+    )
 
 
   };
