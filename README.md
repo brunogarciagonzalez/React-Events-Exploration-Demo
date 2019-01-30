@@ -18,7 +18,7 @@ If we read the React documentation {scroll to “Using State Correctly”, https
 
 It may be milliseconds, so it may be hard to tell, but it is not happening immediately. In fact, React selects the best time to update state and may batch these updates into one larger update.  `SetState()` is async, and React decided when to trigger the asynchronous process.
 
-I think of it sort of like when one uses Git: there is staging the changes and then there is actually committing+pushing the changes. We write the code to “stage” the changes to state, and the inner-workings of React decide when to actually commit+push the changes to the state, maybe all all once.
+I think of it sort of like when one uses Git: there is staging the changes and then there is actually committing+pushing the changes. We write the code to “stage” the changes to state, and the inner-workings of React decide when to actually commit+push the changes to the state, maybe all at once.
 
 So, `setState()` is asynchronous: the state will not actually be set until after the execution stack is cleared. Plus, React may run extra logic behind the scenes, such as batching state changes into one asynchronous update.
 
@@ -47,8 +47,8 @@ Note: If not using the synthetic event with async functions, then the event is a
 ## Alternative to event.persist()
 
 One alternative to using `event.persist()`: you can store the data you need in a variable (e.g. `const example = event.target`). The const would house the reference to the DOM object, completely independent of a reference to the event object. In this way, we retain access to the event’s target, while no longer needing to access the target through the event object.
-More Info
 
+Also:
 ```
 this.setState(
   {
