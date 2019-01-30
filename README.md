@@ -10,8 +10,7 @@ When some code is synchronous, it is “in sync” with the code being executed 
 When some code is asynchronous, it is “not in sync”, it does not follow this straightforward protocol of execution. Invoking the async code at a specific step does not mean that it will be wholly performed directly after the previous step.
 
 Furthermore, whatever step is next in the code (and subsequent steps thereafter) can be executed before the async code is wholly executed. The async functions will get wholly executed once the execution stack clears, check out this video for a thorough explanation of asynchronous code execution in javascript:
-https://www.youtube.com/watch?v=8aGhZQkoFbQ
-(I recommend watching the whole thing again, but for our purposes, can start at 10:24)
+https://youtu.be/8aGhZQkoFbQ?t=624(I recommend watching the whole thing again, but for our purposes, can start at 10:24)
 
 ## setState() is Async
 
