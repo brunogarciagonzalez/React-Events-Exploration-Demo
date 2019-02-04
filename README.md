@@ -62,9 +62,11 @@ The above works due to the fact that the value associated with the “selectedIt
 ## Another Interesting Case You May Run Into
 
 A situation where `event.currentTarget` is `null` even with `event.persist()`:
-https://github.com/facebook/react/issues/2857
+* https://github.com/facebook/react/issues/2857
 
 
 
 ## Resources:
-https://reactjs.org/docs/events.html
+* <a href="https://reactjs.org/docs/events.html">React docs: Events</a>
+* <a href="https://github.com/facebook/react/issues/11527">Explanation by Dan Abramov on why setState() is asynchronous</a>
+* <a href="https://twitter.com/dan_abramov/status/959507572951797761?lang=en">Tweet by Dan Abramov showing that there are situations in which setState() is synchronous</a>
