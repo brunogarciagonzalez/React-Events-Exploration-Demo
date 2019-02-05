@@ -9,14 +9,13 @@ When some code is synchronous, it is “in sync” with the code being executed 
 
 When some code is asynchronous, it is “not in sync”, it does not follow this straightforward protocol of execution. Invoking the async code at a specific step does not mean that it will be wholly performed directly after the previous step.
 
-Furthermore, whatever step is next in the code (and subsequent steps thereafter) can be executed before the async code is wholly executed. The async functions will get wholly executed once the execution stack clears, check out this video for a thorough explanation of asynchronous code execution in javascript:
-https://youtu.be/8aGhZQkoFbQ?t=624 (I recommend watching the whole thing again, but for our purposes, watch 10:24 - 16:16)
+Furthermore, whatever step is next in the code (and subsequent steps thereafter) can be executed before the async code is wholly executed. The async functions will get wholly executed once the execution stack clears, check out this video for a thorough explanation of asynchronous code execution in javascript:<a href="https://youtu.be/8aGhZQkoFbQ?t=624 ">here</a> (I recommend watching the whole thing, but for our purposes, watch 10:24 - 16:16)
 
 ## setState() may be async
 
-If we read the React documentation {scroll to “Using State Correctly”, https://reactjs.org/docs/state-and-lifecycle.html }, we can see that -- many times -- changes in state do not happen as soon as `setState()` is called. Instead, the inner-workings of React make the decision of when to actually update the state.
+If we read the React documentation {scroll to “Using State Correctly”, <a href="https://reactjs.org/docs/state-and-lifecycle.html">here</a> }, we can see that -- many times -- changes in state do not happen as soon as `setState()` is called. Instead, the inner-workings of React make the decision of when to actually update the state.
 
-It may be milliseconds, so it may be hard to tell, but it is not happening immediately. In fact, React selects the best time to update state and may batch these updates into one larger update.  Those times, `SetState()` is async, and React decided when to trigger the process.
+It may be milliseconds, so it may be hard to tell, but it is not happening immediately. In fact, React selects the best time to update state and may batch these updates into one larger update.  Those times, `SetState()` is async, and React decided when to trigger the process. `setState()` is not always asynchronous - there are times that the react code will change state synchronously (based on some black-boxed and situation dependent stuff) -- but we <b>cannot depend on it being synchronous</b>.
 
 I think of it sort of like when one uses Git: there is staging the changes and then there is actually committing+pushing the changes. We write the code to “stage” the changes to state, and the inner-workings of React decide when to actually commit+push the changes to the state, maybe all at once.
 
