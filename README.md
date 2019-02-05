@@ -9,7 +9,7 @@ When some code is synchronous, it is “in sync” with the code being executed 
 
 When some code is asynchronous, it is “not in sync”, it does not follow this straightforward protocol of execution. Invoking the async code at a specific step does not mean that it will be wholly performed directly after the previous step.
 
-Furthermore, whatever step is next in the code (and subsequent steps thereafter) can be executed before the async code is wholly executed. The async functions will get wholly executed once the execution stack clears, check out this video for a thorough explanation of asynchronous code execution in javascript: <a href="https://youtu.be/8aGhZQkoFbQ?t=624 ">here</a> (I recommend watching the whole thing, but for our purposes, watch 10:24 - 16:16)
+Furthermore, whatever step is next in the code (and subsequent steps thereafter) can be executed before the async code is wholly executed. The async functions will get wholly executed once the execution stack clears, check out this video for a thorough explanation of asynchronous code execution in javascript: <a href="https://youtu.be/8aGhZQkoFbQ?t=624 ">here</a> (I recommend watching the whole thing, but for our purposes, watch 10:24 - 16:16).
 
 ## setState() may be async
 
@@ -39,7 +39,7 @@ Due to this nullification of the event object’s properties, these properties c
 
 So -- many times -- by the time `setState()` is actually executed (and the event is actually accessed), the event object being accessed has been nullified. (`setState()` "may be asyncronous" as per the documentation) The variable that houses the reference to the event object (e.g. `event` or `e`) still houses a correct reference to the one object in memory, but we cannot access the values that are no longer associated with it’s keys. To keep the event object from being “pooled” and therefore keep it from being nullified, we call `event.persist()`.
 
-Doing this “removes the synthetic event from the pool”: it will not be reused with later DOM events, because React will use other memory to make another event object to take the place of the one we are using. Since the event is not nullified, it keeps its keys’ values, and so we can now interact with the event object asynchronously. At this point, there are two event objects in memory: the one we have persisted and is now never to be pooled again, and the new event object which will be pooled and reused from now on. (Clone down this repo and install & run, open the console to see the code at work. Check the comments in SimpleComponent.js and un-comment console.logs as you use the app to explore React's management of event objects)
+Doing this “removes the synthetic event from the pool”: it will not be reused with later DOM events, because React will use other memory to make another event object to take the place of the one we are using. Since the event is not nullified, it keeps its keys’ values, and so we can now interact with the event object asynchronously. At this point, there are two event objects in memory: the one we have persisted and is now never to be pooled again, and the new event object which will be pooled and reused from now on. (Clone down this repo and install & run, open the console to see the code at work. Check the comments in SimpleComponent.js and un-comment console.logs as you use the app to explore React's management of event objects).
 
 Note: If not using the synthetic event with async functions, then the event is accessed immediately, so `event.persist()` is not necessary.
 
